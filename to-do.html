@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <title> To do list</title>
+  </head>
+  <body>
+    <h1> To Do List</h1>
+
+    <form>
+      To do: <input type="text" name="todo" id="toDoItem">
+      <input id="submitButton" type="button" value="Submit">
+      <br>
+    </form>
+
+    <p id='listBody'></p>
+
+    <script>
+
+    var submitButton=document.getElementById("submitButton");
+
+    var listBody = document.getElementById('listBody');
+    var listItems = [];
+
+    submitButton.onclick = doIt;
+    function doIt() {
+      var toDoItem = document.getElementById("toDoItem").value;
+      var fullList = "";
+      listItems.push(toDoItem);
+      for (var i =0; i < listItems.length; i++) {
+        fullList = fullList + listItems[i] + "<br>";
+
+      }
+      document.getElementById("toDoItem").value = '';
+      listBody.innerHTML = fullList;
+      console.log(toDoItem);
+    }
+
+
+    </script>
+
+
+  </body>
+  </html>
