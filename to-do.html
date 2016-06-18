@@ -15,12 +15,15 @@
 
     <p id='listBody'></p>
 
+    <input id="reset" type="button" value="reset">
+
     <script>
     var listItems = [];
 
 
     function init() {
       var submitButton=document.getElementById("submitButton");
+      var resetButton=document.getElementById('reset');
 
       var listBody = document.getElementById('listBody');
       var toDoBox = document.getElementById("toDoItem");
@@ -34,8 +37,14 @@
         }
       }
       submitButton.onclick = doIt;
+      resetButton.onclick = reset;
     }
 
+    function reset() {
+      console.log("reset");
+      listItems = [];
+      document.getElementById('listBody').innerHTML = '';
+    }
 
 
     function doIt() {
