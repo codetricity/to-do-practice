@@ -16,34 +16,43 @@
     <p id='listBody'></p>
 
     <script>
-
-    var submitButton=document.getElementById("submitButton");
-
-    var listBody = document.getElementById('listBody');
-    var toDoBox = document.getElementById("toDoItem");
     var listItems = [];
-    toDoBox.onkeypress = function(event) {
-      // 13 is the keycode for the enter key
-      if (event.keyCode == 13) {
-        doIt();
-        console.log("enter key pressed");
-        return false; // exit function or form will submit itself
+
+
+    function init() {
+      var submitButton=document.getElementById("submitButton");
+
+      var listBody = document.getElementById('listBody');
+      var toDoBox = document.getElementById("toDoItem");
+
+      toDoBox.onkeypress = function(event) {
+        // 13 is the keycode for the enter key
+        if (event.keyCode == 13) {
+          doIt();
+          console.log("enter key pressed");
+          return false; // exit function or form will submit itself
+        }
       }
+      submitButton.onclick = doIt;
     }
 
 
-    submitButton.onclick = doIt;
+
     function doIt() {
-      var toDoItem = document.getElementById("toDoItem").value;
       var fullList = "";
-      listItems.push(toDoItem);
+      var toDoBox = document.getElementById("toDoItem").value;
+      console.log(toDoBox);
+
+      listItems.push(toDoBox);
       for (var i =0; i < listItems.length; i++) {
         fullList = fullList + listItems[i] + "<br>";
 
       }
-      document.getElementById("toDoItem").value = '';
       listBody.innerHTML = fullList;
+      return false;
     }
+
+    window.onload = init;
 
 
     </script>
